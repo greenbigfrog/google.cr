@@ -10,12 +10,12 @@ module Google
 
     def shorten_url(url : String)
       response = request("POST", SHORTENER_BASE + "?key=#{@api_key}", {longUrl: "#{url}"}.to_json)
-      puts Shortened.from_json(response)
+      Shortened.from_json(response)
     end
 
     def expand(url : String)
       response = request("GET", SHORTENER_BASE + "?key=#{@api_key}" + "&shortUrl=#{url}")
-      puts Shortened.from_json(response)
+      Shortened.from_json(response)
     end
   end
 
