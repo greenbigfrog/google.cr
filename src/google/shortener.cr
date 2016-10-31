@@ -9,7 +9,7 @@ module Google
     end
 
     def shorten_url(url : String)
-      response = request("POST", SHORTENER_BASE+"?key=#{@api_key}", {longUrl: "#{url}"}.to_json)
+      response = request("POST", SHORTENER_BASE + "?key=#{@api_key}", {longUrl: "#{url}"}.to_json)
       puts Shortened.from_json(response)
     end
 
