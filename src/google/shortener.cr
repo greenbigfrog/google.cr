@@ -14,6 +14,9 @@ module Google
     end
 
     def expand(url : String)
+      unless url.starts_with?("http://") || url.starts_with?("https://")
+        url = "https://" + url
+      end
       response = request("GET", SHORTENER_BASE + "?key=#{@api_key}" + "&shortUrl=#{url}")
       Shortened.from_json(response)
     end
